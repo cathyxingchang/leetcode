@@ -6,8 +6,10 @@
 
 """
     获得所有和为target值的数字的组合
-    167 / 168 test cases passed.
-    超时了,有一个测试点不能顺利的通过
+    修改查询策略,当前元素为开头,只往后找,不往前找
+    单次的大数字数据时间上不会缩小很多,但是很多测试样例总的时间短了
+    顺利通过
+    Your runtime beats 14.87% of python submission
 """
 import time
 class Solution(object):
@@ -25,7 +27,8 @@ class Solution(object):
         current_list = []
         current_sum = 0
         last_num = None
-        for item in candidates:
+        for index in range(0, len(candidates)):
+            item = candidates[index]
             if last_num is not None:
                 # 开头不需要重复的数字
                 if last_num == item:
@@ -33,7 +36,9 @@ class Solution(object):
             last_num = item
             current_sum += item
             current_list.append(item)
-            self.process(current_sum, current_list, target, candidates)
+            # 优化修改
+            # self.process(current_sum, current_list, target, candidates)
+            self.process(current_sum, current_list, target, candidates[index:])
             current_list.pop()
             current_sum -= item
         final_list = []
@@ -47,10 +52,14 @@ class Solution(object):
         if current_sum == target:
             self.result[tuple(sorted(current_list))] = 1
             return
-        for item in candidates:
+        for index in range(0, len(candidates)):
+            item = candidates[index]
             current_sum += item
             current_list.append(item)
-            self.process(current_sum, current_list, target, candidates)
+            # 优化修改
+            # self.process(current_sum, current_list, target, candidates)
+            self.process(current_sum, current_list, target, candidates[index:])
+
             current_list.pop()
             current_sum -= item
 
