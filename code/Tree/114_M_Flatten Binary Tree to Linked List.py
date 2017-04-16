@@ -35,6 +35,7 @@ class Solution(object):
             self.process(root.right, p)
 
             root = self.new_tree
+            print 'g'
 
     def process(self, root, p):
         """
