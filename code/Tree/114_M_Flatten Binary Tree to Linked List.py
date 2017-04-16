@@ -29,7 +29,7 @@ class Solution(object):
             pass
         else:
             # tree的先序遍历
-            self.new_tree = root
+            self.new_tree = TreeNode(root.val)
             p = self.new_tree
             self.process(root.left, p)
             self.process(root.right, p)
@@ -44,16 +44,15 @@ class Solution(object):
         """
         if root is None:
             return
-        p.right = root
+        p.right = TreeNode(root.val)
         p = p.right
         self.process(root.left, p)
         self.process(root.right, p)
 
 head = TreeNode(1)
 a = TreeNode(2)
-b = TreeNode(3)
+
 head.left = a
-head.right = b
 
 test = Solution()
 m = test.flatten(head)
