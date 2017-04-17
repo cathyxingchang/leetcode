@@ -5,41 +5,46 @@
 # Created by xc 17/04/2017
 """
     统计质数的个数
-    注意审题:题目中说的是 小于n的
-    直接遍历的方法是会超时的,那么改变一个思路,在判断是否是质数的时候,用比它的根号小的质数进行判断
-    还是超时19 / 20 test cases passed.
-    在 1500000 这个测试点崩溃
+    解法二：厄拉多塞筛法
+    参考别人的算法
+    http://blog.csdn.net/lisonglisonglisong/article/details/45309651
 """
 
 import math
 class Solution(object):
     def __init__(self):
-        self.primes_set = []
+        self.state_set = []
+        self.n = 0
 
     def countPrimes(self, n):
         """
         :type n: int
         :rtype: int
         """
-        count = 0
+        if n <= 2:
+            return 0
+        self.state_set = [True for i in range(0, n)]
+        self.n = n
 
+        count = 0
+        i = 2
+        while i < n:
+            if i * i > n:
+                break
+            if self.state_set[i]:
+                self.eladuosai(i)
+            i += 1
+        self.state_set[2] = True
         for i in range(2, n):
-            count += self.is_primes(i)
-        print self.primes_set
+            if self.state_set[i]:
+                count += 1
         return count
 
-    def is_primes(self, num):
-        if num == 2:
-            self.primes_set.append(num)
-            return 1
-
-        for item in self.primes_set:
-            if item*item > num:
-                break
-            if num % item == 0:
-                return 0
-        self.primes_set.append(num)
-        return 1
-
+    def eladuosai(self, num):
+        i = num + num
+        while i < self.n:
+            self.state_set[i] = False
+            i += num
+        pass
 test = Solution()
-print test.countPrimes(999983)
+print test.countPrimes(1500000)
