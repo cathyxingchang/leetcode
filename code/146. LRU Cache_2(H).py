@@ -23,8 +23,11 @@ class LRUCache(object):
         :rtype: int
         """
         # 如果不在里面,则不返回-1,不做处理
+
         if key not in self.cache:
             return -1
+        if self.last_key == key:
+            return self.cache[key]['value']
 
         # 如果在里面,返回value,同时更新
         # 步骤如下:
