@@ -20,7 +20,6 @@
     有一个长测试点不过
 """
 
-
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
