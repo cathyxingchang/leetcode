@@ -42,7 +42,6 @@ class Solution(object):
         self.max_path(root)
         return self.max_length
 
-
     def max_path(self, root):
         """
         以root为根节点的树的最大的(或左或右的)路径长度
