@@ -9,7 +9,7 @@
     参考别人的算法
     http://blog.csdn.net/lisonglisonglisong/article/details/45309651
 """
-
+import time
 import math
 class Solution(object):
     def __init__(self):
@@ -46,5 +46,11 @@ class Solution(object):
             self.state_set[i] = False
             i += num
         pass
+
+
+start = time.clock()
 test = Solution()
 print test.countPrimes(1500000)
+end = time.clock()
+total_time = (end - start)*1000
+print total_time
