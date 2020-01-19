@@ -36,7 +36,7 @@ class Solution(object):
         max_area = 0
         stack = [0]
         height.append(0)
-        print height
+        print(height)
         for index in range(1, len(height)):
             if height[index] >= height[stack[-1]]:
                 stack.append(index)
