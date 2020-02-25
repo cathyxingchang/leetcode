@@ -17,6 +17,7 @@ class Solution(object):
             return True
 
         # y=kx+b
+        # python 计算的时候会自动转换小数
         k = (y2-y1)/(x2-x1)
         b = y1-k*x1
         for item in coordinates:
@@ -24,8 +25,3 @@ class Solution(object):
                 return False
         return True
 
-a = 1
-b = 9
-c = a/b
-
-d = c*b

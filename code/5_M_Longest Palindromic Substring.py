@@ -42,4 +42,4 @@ class Solution(object):
 
 s = "aaa"
 test = Solution()
-print test.longestPalindrome(s)
+print(test.longestPalindrome(s))
